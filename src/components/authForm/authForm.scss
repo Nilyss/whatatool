@@ -1,0 +1,29 @@
+#authForm {
+  display: flex;
+  flex-flow: column;
+  background: #f2f2f2f2;
+  border: 2px solid #36395a;
+  border-radius: 4px;
+  padding: 1rem;
+  gap:2em;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .inputContainer {
+    label {
+      width: 100%;
+    }
+    input {
+      width: 100%;
+    }
+  }
+
+  .buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
