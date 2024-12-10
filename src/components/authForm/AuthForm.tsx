@@ -1,12 +1,12 @@
 // styles
-import './authForm.scss'
+import "./authForm.scss";
 
 // hooks | library
 import { ReactElement } from "react";
 
 // component
-import { SignInForm } from "../signInForm/SignInForm";
-import { SignUpForm } from "../signUpForm/SignUpForm";
+import SignInForm from "../signInForm/SignInForm";
+import SignUpForm from "../signUpForm/SignUpForm";
 
 interface IAuthFormProps {
   props: {
@@ -20,7 +20,9 @@ interface IAuthFormProps {
   };
 }
 
-export default function AuthForm({ props }: IAuthFormProps): ReactElement {
+export default function AuthForm({
+  props,
+}: Readonly<IAuthFormProps>): ReactElement {
   const {
     isSignIn,
     email,

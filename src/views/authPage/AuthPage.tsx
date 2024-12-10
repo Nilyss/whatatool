@@ -10,7 +10,7 @@ import AuthForm from "../../components/authForm/AuthForm.tsx";
 import Footer from "../../components/footer/Footer";
 
 export default function AuthPage(): ReactElement {
-  const [isSignIn, setIsSignIn] = useState<boolean>(false);
+  const [isSignIn, setIsSignIn] = useState<boolean>(true);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>("");
