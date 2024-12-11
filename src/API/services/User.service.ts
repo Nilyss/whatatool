@@ -1,5 +1,5 @@
 import { isOnProduction } from "../../utils/scripts/utils.ts";
-import { postRequest } from "../APICalls.ts";
+import { getRequest } from "../APICalls.ts";
 
 // custom types
 import { AxiosResponse } from "axios";
@@ -10,16 +10,13 @@ import { userModel } from "../models/user.model.ts";
 
 export const getUserService = async (
   credentials: IUserCredentials,
-  userID?: IUser["id"],
+  // userID?: IUser["id"],
 ): Promise<IUser> => {
   const endpoint: string = isOnProduction()
-    ? `/users/${userID}`
+    ? `/userMock.JSON`
     : "/userMock.JSON";
 
-  const response: AxiosResponse<IUser | IUser[]> = await postRequest<
-    IUserCredentials,
-    IUser | IUser[]
-  >(endpoint, credentials);
+  const response: AxiosResponse<IUser | IUser[]> = await getRequest(endpoint);
 
   if (!isOnProduction()) {
     const users = response.data as IUser[];
@@ -27,10 +24,8 @@ export const getUserService = async (
       (user: IUser): boolean => user.email === credentials.email,
     );
 
-    if (!foundUser) {
-      throw new Error(
-        `The user ${credentials.email} is not found inside the mockup.`,
-      );
+    if (!foundUser || foundUser.password !== credentials.password) {
+      throw new Error(`Invalid credentials. Try Again.`);
     }
 
     return userModel(foundUser);

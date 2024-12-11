@@ -5,7 +5,12 @@ import "./utils/styles/global.scss";
 import { ReactElement } from "react";
 
 // hooks | library
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 // views
 import AuthPage from "./views/authPage/AuthPage";
@@ -16,10 +21,11 @@ function App(): ReactElement {
   return (
     <Router>
       <Routes>
-        <Route path={"/"} element={<AuthPage />} />
-        <Route path={"auth"} element={<AuthPage />} />
-        <Route path={"home"} element={<HomeWithAuth />} />
-        <Route path={"component_preview"} element={<ComponentPreview />} />
+        <Route path="/" element={<Navigate to="/auth" />}></Route>
+        <Route path={"auth"} element={<AuthPage />}></Route>
+        <Route path={"home"} element={<HomeWithAuth />}></Route>
+        <Route path={"component_preview"} element={<ComponentPreview />}></Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );

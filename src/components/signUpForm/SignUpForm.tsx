@@ -11,6 +11,9 @@ interface ISignUpFormProps {
   setPasswordConfirmation: (value: string) => void;
 }
 
+// components
+import Button from "../button/Button";
+
 export default function SignUpForm({
   email,
   password,
@@ -61,7 +64,7 @@ export default function SignUpForm({
         />
       </div>
       <div className={"buttonContainer"}>
-        <button>S'enregistrer</button>
+        <Button style={"orange"} text={"S'enregistrer"} type={"button"} />
       </div>
     </form>
   );

@@ -1,16 +1,12 @@
 // hooks | library
 import {
   ChangeEvent,
+  FormEvent,
   ReactElement,
   useContext,
-  MouseEvent,
   useEffect,
 } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
-
-// context
-import { UserContext } from "../../context/user/UserContext.tsx";
-import { IUserCredentials } from "../../utils/types/user.types.ts";
 
 // custom types
 interface ISignInFormProps {
@@ -19,6 +15,13 @@ interface ISignInFormProps {
   setEmail: (value: string) => void;
   setPassword: (value: string) => void;
 }
+
+// context
+import { UserContext } from "../../context/user/UserContext.tsx";
+import { IUserCredentials } from "../../utils/types/user.types.ts";
+
+// components
+import Button from "../button/Button.tsx";
 
 export default function SignInForm({
   email,
@@ -29,10 +32,7 @@ export default function SignInForm({
   const navigate: NavigateFunction = useNavigate();
   const { getUser, user } = useContext(UserContext);
 
-  const handleSubmit = async (
-    event: MouseEvent<HTMLButtonElement>,
-  ): Promise<void> => {
-    event.preventDefault();
+  const handleSubmit = async (): Promise<void> => {
     const credentials: IUserCredentials = {
       email,
       password,
@@ -45,10 +45,16 @@ export default function SignInForm({
       console.log("user =>", user);
       navigate("/home");
     }
-  });
+  }, [user]);
 
   return (
-    <form id={"authForm"}>
+    <form
+      id={"authForm"}
+      onSubmit={(e: FormEvent<HTMLFormElement>): void => {
+        e.preventDefault();
+        handleSubmit().finally();
+      }}
+    >
       <h2>Se connecter</h2>
       <div className={"inputContainer"}>
         <label htmlFor={"email"}>Identifiant</label>
@@ -75,13 +81,7 @@ export default function SignInForm({
         />
       </div>
       <div className={"buttonContainer"}>
-        <button
-          onClick={(event: MouseEvent<HTMLButtonElement>): Promise<void> =>
-            handleSubmit(event)
-          }
-        >
-          Connexion
-        </button>
+        <Button style="orange" text="Connexion" type="submit" />
       </div>
     </form>
   );

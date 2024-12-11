@@ -7,15 +7,22 @@ import { isOnProduction } from "../utils/scripts/utils.ts";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 axios.defaults.timeout = 10000;
 axios.defaults.baseURL = isOnProduction()
-  ? "http://192.168.0.112:8800/api"
+  ? "https://nilyss.github.io/whatAToolMockup"
   : "./public/mock";
+axios.defaults.withCredentials = !isOnProduction();
+
+export const getRequest: (url: string) => Promise<AxiosResponse> = async (
+  url: string,
+): Promise<AxiosResponse> => {
+  return await axios.get(url);
+};
 
 export const postRequest = async <T, R>(
   url: string,
   data: T,
 ): Promise<AxiosResponse<R>> => {
   try {
-    console.log('isOnProduction ?', isOnProduction())
+    console.log("isOnProduction ?", isOnProduction());
     return await axios.post<R>(url, data);
   } catch (error) {
     console.error("Erreur in postRequest:", error);

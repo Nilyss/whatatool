@@ -19,13 +19,13 @@ export const UserProvider = ({
 
   const getUser = async (
     userCredentials: IUserCredentials,
-    userID?: IUser["id"],
+    // userID?: IUser["id"],
   ): Promise<void> => {
     // add a timer to avoid flashing du to loader if datas fetch is instant
     await new Promise((resolve): number => setTimeout(resolve, 500));
 
     try {
-      const res: IUser = await getUserService(userCredentials, userID);
+      const res: IUser = await getUserService(userCredentials);
       setUser(res);
     } catch (error) {
       console.error("Error while getting user :", error);

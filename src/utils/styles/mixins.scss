@@ -1,8 +1,8 @@
 @mixin main {
-  min-height: 80dvh;
+  min-height: 90dvh;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: .5rem;
 }

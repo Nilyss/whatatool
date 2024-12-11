@@ -6,9 +6,12 @@ footer {
   align-items: center;
   justify-content: center;
 
-  h2 {
+  .textWrapper {
+    width: 280px;
     text-align: center;
-    color: #ffffff;
-    font-size: 14px;
+    p {
+      color: #ffffff;
+      font-size: 14px;
+    }
   }
 }
