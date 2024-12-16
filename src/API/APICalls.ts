@@ -8,7 +8,7 @@ axios.defaults.headers.post["Content-Type"] = "application/json";
 axios.defaults.timeout = 10000;
 axios.defaults.baseURL = isOnProduction()
   ? "https://nilyss.github.io/whatAToolMockup"
-  : "./public/mock";
+  : "/mock";
 axios.defaults.withCredentials = !isOnProduction();
 
 export const getRequest: (url: string) => Promise<AxiosResponse> = async (

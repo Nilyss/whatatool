@@ -21,7 +21,7 @@ function Home(): ReactElement {
       <main>
         <div className={"mainWrapper"}>
           <section className={"leftSection"}>
-            <Link to={"/development"}>
+            <Link to={"/web_dev"}>
               <figure>
                 <img src={devBackground} alt={"Éditeur de code"} />
               </figure>
