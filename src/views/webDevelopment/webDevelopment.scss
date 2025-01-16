@@ -1,7 +1,7 @@
 @use "../../utils/styles/mixins" as mixins;
 @use "../../utils/styles/variables" as vars;
 
-main {
+#webDevelopment {
   @include mixins.main;
   justify-content: unset;
   padding: unset;

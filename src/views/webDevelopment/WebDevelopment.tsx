@@ -14,7 +14,7 @@ function WebDevelopment(): ReactElement {
   return (
     <>
       <Header />
-      <main>
+      <main id={'webDevelopment'}>
         <NavBar />
       </main>
       <Footer />
