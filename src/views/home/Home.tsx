@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 // component
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import ChatBot from "../../components/chatBot/ChatBot";
 
 function Home(): ReactElement {
   return (
@@ -37,6 +38,7 @@ function Home(): ReactElement {
             </Link>
           </section>
         </div>
+        <ChatBot />
       </main>
       <Footer />
     </>
