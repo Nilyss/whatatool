@@ -43,9 +43,30 @@
 
 #chatBot .chatBotBody {
   display: flex;
+  flex-flow: column;
   align-items: center;
-  justify-content: center;
+  gap: 2em;
   height: 300px;
+  overflow-y: scroll;
+
+  .chatBotMessage {
+    background: #ffffff;
+    padding: 1em;
+    border-radius: 4px;
+    width: 75%;
+    align-self: flex-start;
+    justify-self: flex-start;
+  }
+
+  .userMessage {
+    background: #36395a;
+    color: #ffffff;
+    padding: 1em;
+    border-radius: 4px;
+    width: 75%;
+    align-self: flex-end;
+    justify-self: flex-end;
+  }
 }
 
 #chatBot .chatBotFooter {
